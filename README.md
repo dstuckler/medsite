@@ -25,32 +25,22 @@ tools/                                      Asset-recovery helpers
 URLs match the old Wix site exactly, so existing links and search rankings
 carry over.
 
-## Outstanding: images
+## Images
 
-The original photos and logos live on Wix's CDN (`static.wixstatic.com`), which
-was blocked by the network policy of the environment this was built in, so they
-are **not yet in the repo**. Every spot expecting one currently shows a
-placeholder frame.
+All original images — logo, portraits, client logos, service icons, post
+covers — were pulled from the Wix CDN and live in `assets/img/`.
+`tools/wix-assets.tsv` maps each one back to its original Wix media ID and
+notes where it is used; `tools/fetch-assets.sh` re-downloads them all, and
+works for as long as the Wix site stays up.
 
-To pull them in, from any machine with normal internet access:
+One thing is still missing: **the Crohn's disease PDF**. The download card on
+that post shows the filename but is not yet a link. Drop the file at
+`assets/files/paediatric-crohns-disease.pdf` and swap the `<span class="doc-name">`
+for the commented-out `<a>` directly beneath it.
 
-```bash
-bash tools/fetch-assets.sh
-```
-
-Then uncomment the `<img>` tag inside each placeholder — the tags are already
-written, commented out, pointing at the correct paths. `tools/wix-assets.tsv`
-maps every original Wix asset to its destination and describes where it is used.
-
-Do this before the Wix site is switched off; once it goes, the CDN copies go
-with it.
-
-Two other things are stubbed the same way:
-
-- **Client logos** on the homepage render as text wordmarks rather than
-  invented logos. `fetch-assets.sh` retrieves the real ones.
-- **The Crohn's disease PDF** is linked at
-  `/assets/files/paediatric-crohns-disease.pdf`. Drop the file there.
+Table 1 in the bluebird bio post was an image on the Wix site. It is rebuilt
+here as a real HTML table — same figures, but selectable, screen-reader
+friendly, and readable on a phone.
 
 ## Contact form
 

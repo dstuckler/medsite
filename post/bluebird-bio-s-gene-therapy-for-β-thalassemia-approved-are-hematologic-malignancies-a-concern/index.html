@@ -35,11 +35,7 @@
 <header class="site-header">
   <div class="wrap">
     <a class="brand" href="/">
-      <svg class="mark" viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="30" fill="none" stroke="#9f2747" stroke-width="2"/><path d="M20 44V20l12 15 12-15v24" fill="none" stroke="#39475e" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      <span class="brand-text">
-        <span class="brand-name">Amy Kenyon, PhD</span>
-        <span class="brand-role">Freelance Medical Writer</span>
-      </span>
+      <img class="logo" src="/assets/img/logo-header.png" alt="Amy Kenyon" width="2063" height="706">
     </a>
 
     <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
@@ -82,9 +78,59 @@
 
         <p>bluebird bio uses two different LVV to produce three different products (table 1). A simple tallying of the numbers reveals 5 cases of haematologic malignancies across all trials. However, a deeper dive into the data tells a more alarming story.</p>
 
-        <figure>
-          <div class="frame frame-wide" data-placeholder="Table 1"></div>
-          <figcaption class="figure-caption">Table 1: bluebird bio gene-therapy products</figcaption>
+        <figure class="table-figure">
+          <figcaption>Table 1: bluebird bio gene-therapy products</figcaption>
+          <div class="table-scroll">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th scope="col">Disease</th>
+                  <th scope="col">CALD</th>
+                  <th scope="col">TDT</th>
+                  <th scope="col">SCD</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row">Gene-therapy</th>
+                  <td>elivaldogene autotemcel (eli-cel)</td>
+                  <td>betibeglogene autotemcel (beti-cel)</td>
+                  <td>lovotibeglogene autotemcel (lovo-cel)</td>
+                </tr>
+                <tr>
+                  <th scope="row">Vector</th>
+                  <td>Lenti-D LVV</td>
+                  <td>BB305 LVV</td>
+                  <td>BB305 LVV</td>
+                </tr>
+                <tr>
+                  <th scope="row">No. of patients treated</th>
+                  <td>67</td>
+                  <td>63</td>
+                  <td>50</td>
+                </tr>
+                <tr>
+                  <th scope="row">No. of malignancies</th>
+                  <td>3</td>
+                  <td>0</td>
+                  <td>2</td>
+                </tr>
+                <tr>
+                  <th scope="row">Insertional oncogenesis</th>
+                  <td>3</td>
+                  <td>0</td>
+                  <td>0</td>
+                </tr>
+                <tr>
+                  <th scope="row">Oligoclonality</th>
+                  <td>7</td>
+                  <td>3</td>
+                  <td>2</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="table-note">CALCD, early active cerebral adrenoleukodystrophy; SCD, sickle cell disease; TDT, transfusion-dependent thalassemia</p>
         </figure>
 
         <p>Among 50 sickle cell disease (SCD) patients treated with lovo-cel, two developed AML. Insertional oncogenesis, which occurs when a LVV integrates into the DNA of target cells and affects the expression of nearby oncogenes and tumour suppressor genes, was ruled out in both cases. Peripheral blood analysis in one such patient revealed that blast cells contained a predominant site for BB305 LVV integration within the vesicle-associated membrane protein (<em>VAMP4</em>) gene.<sup><a href="#ref-6">[6]</a></sup> Given that VAMP4 has no known role in cell proliferation or oncogenesis, it is unlikely to be driving the oncogenesis.</p>
@@ -142,7 +188,7 @@
 
       <div>
         <div class="footer-brand">
-          <svg class="mark" viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="30" fill="none" stroke="#dfa7b6" stroke-width="2"/><path d="M20 44V20l12 15 12-15v24" fill="none" stroke="#ffffff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <img class="mark" src="/assets/img/logo-footer.png" alt="" width="471" height="491">
           <span>Amy Kenyon, PhD</span>
         </div>
         <p class="tagline">Amy Kenyon is a freelance medical writer with over 10 years&rsquo; experience in genomics, genetics, and gene-editing.</p>

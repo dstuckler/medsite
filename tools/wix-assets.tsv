@@ -1,27 +1,28 @@
 # Original image assets from the Wix site, and where each one belongs in this repo.
 #
-# These could not be downloaded during the rebuild: static.wixstatic.com is
-# blocked by this environment's network egress policy. Run tools/fetch-assets.sh
-# from a machine with normal internet access to pull them all down.
+# All of these have already been downloaded into the repo. This manifest and
+# tools/fetch-assets.sh are kept so the originals can be re-pulled if needed,
+# for as long as the Wix site stays up.
 #
 # Columns: wix_media_id <TAB> target_path <TAB> where it is used
 #
 2051ab_f1efba7439ae436dbd47c866e932f517~mv2.png	assets/img/logo-header.png	header wordmark (169x58)
 2051ab_ed828075c58f45b4b3537a8d24974c83~mv2.png	assets/img/logo-footer.png	footer mark (64x67)
-2051ab_dda2043b9caf4e218d4983e7e92b12ca~mv2.jpg	assets/img/amy-kenyon-portrait.jpg	home hero portrait (393x837)
+2051ab_dda2043b9caf4e218d4983e7e92b12ca~mv2.jpg	assets/img/amy-kenyon-portrait.jpg	home hero decorative panel (desk flat-lay)
 2051ab_63c8f0bc2967497795fa477e8009a66e~mv2.png	assets/img/amy-kenyon-about.png	about page polaroid portrait (281x642)
-2051ab_925525c966e64c0ab013314a15796ed4~mv2.jpg	assets/img/services-hero.jpg	services page banner (980x642)
-2051ab_883ddfffc1394a5d861d3b99717d1474~mv2.png	assets/img/testimonial-avatar.png	testimonial headshot (205x205)
+2051ab_925525c966e64c0ab013314a15796ed4~mv2.jpg	assets/img/services-hero.jpg	services page banner (DNA render)
+2051ab_883ddfffc1394a5d861d3b99717d1474~mv2.png	assets/img/amy-kenyon-headshot.png	home hero round headshot
 2051ab_633214180f1f4fdda5b08b0b77cb50b9~mv2.png	assets/img/client-infill.png	client logo: infill healthcare communication (253x91)
 2051ab_c6f5bbd484de468cb74a12e1810b2d67~mv2.png	assets/img/client-media-hack.png	client logo: Media Hack (339x125)
 2051ab_825b2624b43c4cccab5439a09f7bf03b~mv2.png	assets/img/client-vital-health.png	client logo: Vital Health (300x75)
-2051ab_1db0b7a1437340a088315d11975595f1~mv2.png	assets/img/client-download.png	client logo, 4th in row (290x174)
+2051ab_1db0b7a1437340a088315d11975595f1~mv2.png	assets/img/client-ttp.png	client logo: The Technology Partnership
 2051ab_625d09a8dcdc48ca83efaf169744e857~mv2.png	assets/img/client-iol.png	client logo: IOL (231x91)
 2051ab_2c6c7b7fdf114521bfe90b26f5eba16b~mv2.png	assets/img/client-omni.png	client logo: Omni (317x97)
-2051ab_89f5ac9b160948e28e2ea08e0e26ee19~mv2.png	assets/img/service-icon-5.png	services icon (125x125)
-2051ab_a1e185a9cbba4cdf90585dc6e83c8193~mv2.png	assets/img/service-icon-6.png	services icon (125x125)
-2051ab_12ea7ba6fc6048118c7d8d8794e154d0~mv2.png	assets/img/service-icon-4.png	services icon (125x125)
-2051ab_679fc39dd3fa4e5eba45d68d75f3211d~mv2.png	assets/img/service-icon-3.png	services icon (125x125)
-2051ab_2b299750359b40a088c33b7cc37fd1b6~mv2.png	assets/img/service-icon-2.png	services icon (125x125)
+2051ab_89f5ac9b160948e28e2ea08e0e26ee19~mv2.png	assets/img/service-icon-5.png	services icon: website content
+2051ab_a1e185a9cbba4cdf90585dc6e83c8193~mv2.png	assets/img/service-icon-6.png	services icon: learning and development
+2051ab_12ea7ba6fc6048118c7d8d8794e154d0~mv2.png	assets/img/service-icon-4.png	services icon: congress support
+2051ab_679fc39dd3fa4e5eba45d68d75f3211d~mv2.png	assets/img/service-icon-3.png	services icon: HCP education
+2051ab_2b299750359b40a088c33b7cc37fd1b6~mv2.png	assets/img/service-icon-2.png	services icon: patient education
 2051ab_5c22f03184fc44c9af9fdb86e64e1f08~mv2.png	assets/img/post-paediatric-crohns.png	portfolio card: paediatric Crohn's post
 2051ab_4ddd290a55034157b331ebce3dda70f7~mv2.png	assets/img/post-bluebird-bio.png	portfolio card: bluebird bio post
+2051ab_f3d4aad2ea0946df8aef74ebbca4e81e~mv2.png	-	Table 1 in the bluebird bio post; rebuilt as a real HTML table, not used as an image

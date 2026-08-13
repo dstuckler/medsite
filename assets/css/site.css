@@ -155,20 +155,15 @@ strong, b { font-weight: 600; color: var(--ink); }
 }
 .brand:hover { text-decoration: none; color: var(--wine); }
 
-.brand .mark {
-  width: 2.5rem;
-  height: 2.5rem;
+/* The logo already contains the wordmark, so it stands alone in the header. */
+.brand .logo {
+  width: auto;
+  height: 3.25rem;
   flex: 0 0 auto;
 }
 
-.brand .brand-text { display: flex; flex-direction: column; }
-.brand .brand-name { font-size: 1.4rem; }
-.brand .brand-role {
-  font-family: var(--body-font);
-  font-size: 0.625rem;
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-  color: var(--wine);
+@media (max-width: 480px) {
+  .brand .logo { height: 2.5rem; }
 }
 
 .nav-toggle {
@@ -278,6 +273,13 @@ strong, b { font-weight: 600; color: var(--ink); }
    Sections
    -------------------------------------------------------------------------- */
 
+/* Full-bleed image band used at the top of the services page. */
+.page-banner {
+  height: clamp(9rem, 22vw, 16rem);
+  overflow: hidden;
+}
+.page-banner img { width: 100%; height: 100%; object-fit: cover; }
+
 .section { padding-block: clamp(3.5rem, 8vw, 6rem); }
 .section-blush { background: var(--blush); }
 .section-tight { padding-block: clamp(2.5rem, 5vw, 3.5rem); }
@@ -367,23 +369,21 @@ strong, b { font-weight: 600; color: var(--ink); }
 
 .frame img { width: 100%; height: 100%; object-fit: cover; }
 
-/* The two portraits are tall and narrow (as on the original site); cap their
-   width so their height stays in proportion without dominating the page. */
+/* Tall decorative panel behind the home hero (a faded desk flat-lay). */
 .frame-portrait {
-  aspect-ratio: 393 / 837;
-  max-width: 17.5rem;
+  aspect-ratio: 393 / 700;
+  max-width: 20rem;
   margin-inline: auto;
 }
+
+/* The about photo ships as a finished polaroid, so it needs no frame of its
+   own — just a soft shadow. */
 .frame-polaroid {
-  aspect-ratio: 281 / 642;
-  max-width: 16rem;
-  margin-inline: auto;
-  background: var(--white);
-  border: 1px solid var(--line-soft);
-  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.08);
-  padding: 0.9rem 0.9rem 3.25rem;
+  background: transparent;
+  filter: drop-shadow(0 16px 32px rgba(0, 0, 0, 0.1));
 }
-.frame-wide { aspect-ratio: 980 / 642; }
+
+.frame-wide { aspect-ratio: 2 / 1; }
 .frame-card { aspect-ratio: 16 / 10; }
 
 /* Placeholder shown until the real photo is dropped in. */
@@ -407,20 +407,25 @@ strong, b { font-weight: 600; color: var(--ink); }
   );
 }
 
-/* Inside the polaroid the white border is the frame, so inset the placeholder
-   to sit where the photo will go. */
-.frame-polaroid[data-placeholder]::after {
-  inset: 0.9rem 0.9rem 3.25rem;
-  background:
-    repeating-linear-gradient(
-      135deg,
-      rgba(255, 255, 255, 0.55) 0 12px,
-      rgba(255, 255, 255, 0.25) 12px 24px
-    ),
-    linear-gradient(150deg, var(--blush), var(--blue-grey));
-}
-
 .frame[data-placeholder]:has(img)::after { display: none; }
+
+/* Round headshot sitting over the hero panel. */
+.hero-figure { position: relative; }
+
+.hero-headshot {
+  position: absolute;
+  left: 50%;
+  bottom: -2.5rem;
+  transform: translateX(-50%);
+  width: 9rem;
+  height: 9rem;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 5px solid var(--white);
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.14);
+  background: var(--blush);
+}
+.hero-headshot img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 22%; }
 
 /* --------------------------------------------------------------------------
    Testimonials
@@ -494,29 +499,26 @@ strong, b { font-weight: 600; color: var(--ink); }
    -------------------------------------------------------------------------- */
 
 .clients {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
   align-items: center;
-  justify-content: center;
-  gap: clamp(1.5rem, 4vw, 3.5rem);
+  gap: clamp(1rem, 3vw, 2.5rem);
   margin-top: 2rem;
+}
+
+@media (max-width: 900px) {
+  .clients { grid-template-columns: repeat(3, 1fr); }
+}
+@media (max-width: 480px) {
+  .clients { grid-template-columns: repeat(2, 1fr); }
 }
 
 .client {
   display: grid;
   place-items: center;
-  min-width: 9rem;
-  min-height: 4.5rem;
-  padding: 0.75rem 1.25rem;
-  border: 1px solid var(--line-soft);
-  background: var(--white);
-  font-family: var(--head-font);
-  font-size: 1.05rem;
-  line-height: 1.25;
-  text-align: center;
-  color: var(--navy);
+  min-height: 4rem;
   filter: grayscale(1);
-  opacity: 0.85;
+  opacity: 0.7;
   transition: opacity 0.2s ease, filter 0.2s ease;
 }
 .client:hover { filter: grayscale(0); opacity: 1; }
@@ -570,16 +572,17 @@ strong, b { font-weight: 600; color: var(--ink); }
 }
 
 .service-icon {
-  width: 5.5rem;
-  height: 5.5rem;
+  width: 7rem;
+  height: 7rem;
   display: grid;
   place-items: center;
   border-radius: 50%;
-  background: var(--blush);
+  background: var(--white);
   border: 1px solid var(--rose-light);
   color: var(--wine);
+  padding: 1.4rem;
 }
-.service-icon svg { width: 2.5rem; height: 2.5rem; }
+.service-icon img { max-width: 100%; max-height: 100%; width: auto; }
 
 .service h3 {
   font-size: 1.2rem;
@@ -670,6 +673,66 @@ strong, b { font-weight: 600; color: var(--ink); }
   color: var(--muted);
   text-align: center;
   margin-top: 0.75rem;
+}
+
+/* --------------------------------------------------------------------------
+   Data table (Table 1 in the bluebird bio post)
+   -------------------------------------------------------------------------- */
+
+.table-figure { margin: 2.5rem 0; }
+
+.table-figure figcaption {
+  font-family: var(--head-font);
+  font-size: 1.15rem;
+  color: var(--ink);
+  margin-bottom: 0.85rem;
+}
+
+.table-scroll { overflow-x: auto; }
+
+.data-table {
+  border-collapse: collapse;
+  width: 100%;
+  min-width: 34rem;
+  font-size: 0.875rem;
+  background: var(--navy);
+}
+
+.data-table th,
+.data-table td {
+  padding: 0.7rem 0.85rem;
+  text-align: center;
+  vertical-align: middle;
+  border: 2px solid var(--navy);
+  line-height: 1.4;
+}
+
+.data-table thead th {
+  background: var(--blue-grey);
+  color: var(--navy);
+  font-family: var(--body-font);
+  font-weight: 700;
+  letter-spacing: 0.03em;
+}
+
+.data-table tbody th {
+  background: var(--white);
+  color: var(--navy);
+  font-weight: 700;
+  text-align: center;
+}
+
+.data-table tbody td {
+  background: #e6ebf6;
+  color: var(--navy);
+  font-weight: 400;
+}
+
+.table-note {
+  font-size: 0.8125rem;
+  color: var(--muted);
+  margin: 0.75rem 0 0;
+  line-height: 1.5;
 }
 
 .references {
@@ -855,7 +918,13 @@ strong, b { font-weight: 600; color: var(--ink); }
   font-size: 1.35rem;
   color: var(--white);
 }
-.footer-brand .mark { width: 2.75rem; height: 2.75rem; flex: 0 0 auto; }
+.footer-brand .mark {
+  width: 2.75rem;
+  height: auto;
+  flex: 0 0 auto;
+  /* The mark is burgundy on transparent; lighten it against the navy footer. */
+  filter: brightness(0) invert(1) opacity(0.9);
+}
 
 .site-footer .tagline { max-width: 26rem; margin-bottom: 0; }
 

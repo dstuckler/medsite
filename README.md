@@ -35,11 +35,14 @@ everything still resolves.
 
 | Surface | URL | Purpose |
 | --- | --- | --- |
-| GitHub Pages | `https://dstuckler.github.io/medsite/` | Public preview, shareable |
+| GitHub Pages | https://dstuckler.github.io/medsite/ | Public preview, shareable |
 | Render | see the Render dashboard | The deploy target for the real domain |
 | Wix | `https://www.amykenyonmed.com` | Still the live site until DNS moves |
 
-Pages is published by `.github/workflows/pages.yml` on every push to `main`.
+Pages serves the `gh-pages` branch, which `.github/workflows/pages.yml`
+rebuilds from `main` on every push. Do not edit `gh-pages` by hand — it is
+overwritten each time. `tools/` and this README are left out of what gets
+served.
 
 ## Images
 

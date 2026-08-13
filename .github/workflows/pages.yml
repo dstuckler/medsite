@@ -1,12 +1,16 @@
 
-# Publishes the site to GitHub Pages on every push to main, giving a public,
-# shareable URL (https://dstuckler.github.io/medsite/) alongside the Render
-# deploy. `enablement: true` switches Pages on the first time this runs, so
-# there is nothing to click in repository settings.
+# Keeps the GitHub Pages preview in sync with main.
 #
-# This is a preview surface. The real site is whatever the domain points at.
+# Pages is served from the `gh-pages` branch (the classic branch source, which
+# a plain push can set up — the Actions-based Pages source needs an admin-level
+# token this workflow cannot have). So instead of uploading an artifact, this
+# rebuilds `gh-pages` from `main` on every push and force-pushes it.
+#
+# Live at: https://dstuckler.github.io/medsite/
+#
+# Nothing here affects the Render deploy, which tracks `main` directly.
 
-name: Deploy to GitHub Pages
+name: Sync GitHub Pages preview
 
 on:
   push:
@@ -14,44 +18,44 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: read
-  pages: write
-  id-token: write
+  contents: write
 
-# Let a running deploy finish rather than cancelling it mid-publish.
 concurrency:
-  group: pages
+  group: pages-sync
   cancel-in-progress: false
 
 jobs:
-  deploy:
+  sync:
     runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - uses: actions/checkout@v4
-
-      - uses: actions/configure-pages@v5
         with:
-          enablement: true
+          fetch-depth: 0
 
-      # The site is already static — upload the repo as-is, minus the
-      # tooling that has no business being served.
-      - name: Stage the site
+      - name: Rebuild gh-pages from main
         run: |
-          mkdir -p _site
+          set -euo pipefail
+
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          # Stage exactly what should be served: the site, minus repo tooling.
+          rm -rf /tmp/site && mkdir -p /tmp/site
           rsync -a \
             --exclude '.git' \
             --exclude '.github' \
-            --exclude '_site' \
             --exclude 'tools' \
             --exclude 'README.md' \
-            ./ _site/
+            ./ /tmp/site/
 
-      - uses: actions/upload-pages-artifact@v3
-        with:
-          path: _site
+          # .nojekyll stops Pages running the files through Jekyll.
+          touch /tmp/site/.nojekyll
 
-      - id: deployment
-        uses: actions/deploy-pages@v4
+          git checkout --orphan gh-pages-tmp
+          git rm -rq --cached .
+          find . -maxdepth 1 -mindepth 1 ! -name '.git' -exec rm -rf {} +
+          cp -a /tmp/site/. .
+
+          git add -A
+          git commit -q -m "Publish ${GITHUB_SHA::7} to GitHub Pages"
+          git push -f origin gh-pages-tmp:gh-pages

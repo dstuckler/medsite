@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- EDIT: the text in the browser tab, and what Google shows as the headline -->
+  <title>Medsite</title>
+  <!-- EDIT: the one-line description search engines show under the headline -->
+  <meta name="description" content="A short sentence describing what this site is.">
+
+  <style>
+    :root {
+      --bg: #ffffff;
+      --text: #1a1a1a;
+      --muted: #5a5a5a;
+      --accent: #1f6feb;
+      --line: #e4e4e7;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #121214;
+        --text: #f0f0f2;
+        --muted: #a1a1aa;
+        --accent: #6ea8fe;
+        --line: #2a2a30;
+      }
+    }
+
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+    .wrap {
+      max-width: 42rem;
+      margin: 0 auto;
+      padding: 4rem 1.5rem 6rem;
+    }
+    h1 {
+      font-size: clamp(2rem, 6vw, 3rem);
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+      margin: 0 0 1rem;
+    }
+    .lede {
+      font-size: 1.15rem;
+      color: var(--muted);
+      margin: 0 0 3rem;
+    }
+    h2 {
+      font-size: 1.25rem;
+      letter-spacing: -0.01em;
+      margin: 3rem 0 0.75rem;
+      padding-top: 2rem;
+      border-top: 1px solid var(--line);
+    }
+    p { margin: 0 0 1rem; }
+    a { color: var(--accent); }
+    footer {
+      margin-top: 4rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body>
+  <main class="wrap">
+
+    <!-- EDIT: the big headline at the top of the page -->
+    <h1>Medsite</h1>
+
+    <!-- EDIT: one or two sentences saying what this is and who it's for -->
+    <p class="lede">
+      This is a placeholder homepage. Replace this text with a sentence
+      or two about what the site is for.
+    </p>
+
+    <h2>About</h2>
+    <p>
+      Write a paragraph here. Everything on this page is plain text between
+      the tags &mdash; change the words, leave the angle brackets alone.
+    </p>
+
+    <h2>Contact</h2>
+    <p>
+      <!-- EDIT: swap in a real address, or delete this whole section -->
+      <a href="mailto:you@example.com">you@example.com</a>
+    </p>
+
+    <footer>
+      &copy; 2026 &mdash; edit this footer or delete it.
+    </footer>
+
+  </main>
+</body>
+</html>

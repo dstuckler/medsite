@@ -13,6 +13,16 @@
     });
   }
 
+  /* ---- Footer copyright year -------------------------------------------
+     The HTML carries a hard-coded year so the footer is still correct with
+     JavaScript off; this just keeps it current without anyone editing it.
+     --------------------------------------------------------------------- */
+  var year = String(new Date().getFullYear());
+  Array.prototype.forEach.call(
+    document.querySelectorAll("[data-current-year]"),
+    function (el) { el.textContent = year; }
+  );
+
   /* ---- Contact form ----------------------------------------------------
      The site is static, so there is no server to POST to. Until a form
      endpoint is wired up (see README), the form opens the visitor's mail

@@ -71,7 +71,15 @@ having no build step.
 
 ## Fonts
 
-Headings use [Forum](https://fonts.google.com/specimen/Forum) from Google Fonts,
-matching the original. Body text uses Avenir where available, falling back
-through a system sans-serif stack. The original Wix site licensed Avenir LT
-through Wix; that licence does not transfer, so it is not self-hosted here.
+Headings use [Forum](https://fonts.google.com/specimen/Forum), matching the
+original. It is self-hosted from `assets/fonts/` (SIL Open Font License 1.1),
+so the site makes no third-party requests at all — nothing to go down, and
+nothing sent to Google when someone visits.
+
+Body text uses Avenir where available, falling back through a system
+sans-serif stack. The original Wix site licensed Avenir LT through Wix; that
+licence does not transfer, so it is not self-hosted here.
+
+The footer year updates itself. The HTML carries a hard-coded year so the
+footer is still right with JavaScript off, and `assets/js/site.js` refreshes
+it on load.

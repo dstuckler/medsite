@@ -1,0 +1,57 @@
+
+# Publishes the site to GitHub Pages on every push to main, giving a public,
+# shareable URL (https://dstuckler.github.io/medsite/) alongside the Render
+# deploy. `enablement: true` switches Pages on the first time this runs, so
+# there is nothing to click in repository settings.
+#
+# This is a preview surface. The real site is whatever the domain points at.
+
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Let a running deploy finish rather than cancelling it mid-publish.
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/configure-pages@v5
+        with:
+          enablement: true
+
+      # The site is already static — upload the repo as-is, minus the
+      # tooling that has no business being served.
+      - name: Stage the site
+        run: |
+          mkdir -p _site
+          rsync -a \
+            --exclude '.git' \
+            --exclude '.github' \
+            --exclude '_site' \
+            --exclude 'tools' \
+            --exclude 'README.md' \
+            ./ _site/
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+      - id: deployment
+        uses: actions/deploy-pages@v4

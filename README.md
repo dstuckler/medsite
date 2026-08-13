@@ -25,6 +25,22 @@ tools/                                      Asset-recovery helpers
 URLs match the old Wix site exactly, so existing links and search rankings
 carry over.
 
+All internal links are **relative**, not root-absolute, so the site works
+unchanged whether it is served from a domain root (Render, and eventually
+amykenyonmed.com) or from a subdirectory (GitHub Pages at
+`/medsite/`). It also means you can open `index.html` straight off disk and
+everything still resolves.
+
+## Where it is published
+
+| Surface | URL | Purpose |
+| --- | --- | --- |
+| GitHub Pages | `https://dstuckler.github.io/medsite/` | Public preview, shareable |
+| Render | see the Render dashboard | The deploy target for the real domain |
+| Wix | `https://www.amykenyonmed.com` | Still the live site until DNS moves |
+
+Pages is published by `.github/workflows/pages.yml` on every push to `main`.
+
 ## Images
 
 All original images — logo, portraits, client logos, service icons, post

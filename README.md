@@ -42,6 +42,17 @@ Table 1 in the bluebird bio post was an image on the Wix site. It is rebuilt
 here as a real HTML table — same figures, but selectable, screen-reader
 friendly, and readable on a phone.
 
+## The v2 concept page
+
+`/v2` is a proposed redesign of the **homepage only**, published unlisted
+(`noindex`) so it can be compared side by side with the current one. It uses
+its own stylesheet, `assets/css/v2.css`, and changes nothing about the live
+pages — deleting the `v2/` folder removes it completely.
+
+It invents no new facts. Every claim, quote, credential, and client on it comes
+from the existing site; what changes is what gets said first and how much room
+it gets.
+
 ## Contact form
 
 The form has no server behind it. On submit it opens the visitor's email client
